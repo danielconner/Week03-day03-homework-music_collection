@@ -8,6 +8,13 @@ artist1 = Artist.new(
 
 artist1.save()
 
+album1 = Album.new(
+  'title' => 'Dookie',
+  'genre' => 'Punk',
+  'artist_id' => artist1.id
+);
+
+album1.save()
 
 
 
