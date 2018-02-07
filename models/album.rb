@@ -14,5 +14,12 @@ class Albums
     @artist_id = options['artist_id'].to_i
   end
 
+  def save()
+    sql="INSERT INTO music_collection (name, title, genre, artist_id)
+      VALUES ($1,$2,$3,$4)
+      RETURNING id"
+    values[@name, @title, @genre, @artist_id]
+    @id = SqlRunner.run(sql, values)
+  end 
 
 end
