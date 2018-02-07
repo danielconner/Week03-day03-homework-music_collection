@@ -1,4 +1,5 @@
 require('pg')
+require('pry')
 require_relative("../db/sql_runner.rb")
 
 class Album
@@ -44,13 +45,15 @@ class Album
     SqlRunner.run(sql)
   end
 
-  # def artist
-  #   sql = "SELECT * FROM albums WHERE id = $1"
-  #   values = [@artist_id]
-  #   artist_details = SqlRunner.run(sql,values)
-  #   result = Artist.new(artist_details)
-  #   return result
-  # end
+  def artist
+    sql = "SELECT * FROM artists WHERE id = $1"
+    values = [@artist_id]
+    artists = SqlRunner.run(sql, values)
+
+    return artists.map{|band| Artist.new(band)}
+    
+
+  end
 
 
 end
